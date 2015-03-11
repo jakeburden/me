@@ -6,7 +6,11 @@ var path = require('path')
 var router = require('routes')()
 
 router.addRoute('/', function (req, res) {
-    layout(res).end(write('content.html'))
+    layout(res).end(write('content.html', 'content'))
+})
+
+router.addRoute('/posts/:title?', function (reqs, res, params) {
+    layout(res).end(write(params.title, 'posts'))
 })
 
 server = http.createServer(function (req, res) {
@@ -30,6 +34,6 @@ function read (file) {
     return fs.createReadStream(path.join(__dirname, 'templates', file))
 }
 
-function write (file) {
-    return fs.readFileSync(path.join(__dirname, 'content', file))
+function write (file, dir) {
+    return fs.readFileSync(path.join(__dirname, dir, file))
 }
