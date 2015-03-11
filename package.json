@@ -1,0 +1,25 @@
+{
+  "name": "me",
+  "version": "1.0.0",
+  "description": "personal site",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "iojs server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jekrb/me.git"
+  },
+  "author": "Jacob Burden",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jekrb/me/issues"
+  },
+  "homepage": "https://github.com/jekrb/me",
+  "dependencies": {
+    "ecstatic": "^0.6.1",
+    "routes": "^2.0.0",
+    "trumpet": "^1.7.0"
+  }
+}
