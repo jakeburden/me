@@ -5,11 +5,11 @@ var fs = require('fs')
 var path = require('path')
 var router = require('routes')()
 
-router.addRoute('/*', function (req, res) {
+router.addRoute('/', function (req, res) {
     layout(res).end( write('content.html', 'content') )
 })
 
-router.addRoute('/posts/.:title?', function (reqs, res, params) {
+router.addRoute('/posts/:title?', function (reqs, res, params) {
     layout(res).end( write(params.title, 'posts') )
 })
 
