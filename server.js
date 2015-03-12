@@ -9,7 +9,7 @@ router.addRoute('/', function (req, res) {
     layout(res).end( write('content.html', 'content') )
 })
 
-router.addRoute('/posts/:title', function (reqs, res, params) {
+router.addRoute('/posts/:title', function (req, res, params) {
     if (params.title.split('.').pop() != 'html') {
          params.title += '.html'
     }
