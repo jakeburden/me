@@ -9,7 +9,10 @@ router.addRoute('/', function (req, res) {
     layout(res).end( write('content.html', 'content') )
 })
 
-router.addRoute('/posts/:title?', function (reqs, res, params) {
+router.addRoute('/posts/:title', function (reqs, res, params) {
+    if (params.title.split('.').pop() != 'html') {
+         params.title += '.html'
+    }
     layout(res).end( write(params.title, 'posts') )
 })
 
@@ -35,5 +38,14 @@ function read (file) {
 }
 
 function write (file, dir) {
-    return fs.readFileSync(path.join(__dirname, dir, file))
+    try {
+        return fs.readFileSync(path.join(__dirname, dir, file))
+    } catch (e) {
+        if (e.code === 'ENOENT') {
+            return 'I do not know this URL.  Please confirm it is correct.'
+        } else {
+            throw e
+        }
+    }
 }
+
